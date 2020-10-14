@@ -38,7 +38,6 @@ function Sensors() {
       {/* Chart */}
       <div className="bx--row sensors-page__r2">
         <div className="bx--col-lg-16">
-            <h1>THIS THING FIVE</h1>
           <AccelerationsChart />
         </div>
       </div>
