@@ -28,6 +28,8 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
   timescaledb:
     image: timescale/timescaledb:latest-pg12
     environment:
