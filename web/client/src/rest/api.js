@@ -4,7 +4,7 @@ class API {
   resetStream() {
     axios({
       method: 'put',
-      url: 'http://localhost:4000/_stream',
+      url: '/api/_stream',
     })
       .then(function (response) {
         console.log(response);

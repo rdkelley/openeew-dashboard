@@ -2,8 +2,17 @@ const { GraphQLServer } = require('graphql-yoga');
 const { Query, initRESTEndpoints } = require('./resolvers');
 const path = require('path');
 const express = require('express');
+const Sequelize = require('sequelize');
+const keys = require('./keys');
 
 const PORT = process.env.PORT || 4000;
+
+const sequelize = new Sequelize(keys.pgDatabase, keys.pgUser, keys.pgPassword, {
+  host: keys.pgHost,
+  dialect: 'postgres',
+  protocol: 'postgres',
+  port: keys.pgPort,
+});
 
 const resolvers = {
   Query,
@@ -36,4 +45,23 @@ server.express.get('/', (req, res) => {
 
 initRESTEndpoints(server);
 
-server.start(PORT, () => console.log(`Server is running on ${PORT}`));
+function connect() {
+  console.log('connect run');
+
+  sequelize
+    .authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+    })
+    .catch((err) => {
+      console.error('Unable to connect to the database:', err);
+
+      setTimeout(() => {
+        connect();
+      }, 10000);
+    });
+}
+
+setTimeout(connect, 10000);
+
+server.start(PORT, () => console.log(`OpenEEW Dashboard server is running.`));
