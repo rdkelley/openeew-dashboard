@@ -8,8 +8,9 @@
     "client": "cd client && npm start",
     "client:setup": "cd client && npm install",
     "api": "cd api && npm start",
+    "api:dev": "cd api && npm start:dev",
     "api:setup": "cd api && npm install",
-    "start": "concurrently \"npm run api\" \"npm run client\""
+    "start": "concurrently \"npm run api:dev\" \"npm run client\""
   },
   "devDependencies": {
     "concurrently": "^5.3.0"

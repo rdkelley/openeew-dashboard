@@ -2,6 +2,7 @@ import React from 'react'
 import EventsMap from '../../components/EventsMap'
 import EarthquakeList from '../../components/EarthquakeList'
 import Tile from '../../components/Tile'
+import AuthClient from '../../rest/auth'
 
 const Events = () => {
   return (
@@ -38,6 +39,9 @@ const Events = () => {
         <div className="bx--col-xlg-4 events-page-earthquake-list__container">
           <EarthquakeList />
         </div>
+
+        <button onClick={AuthClient.login}>Log in</button>
+        <button onClick={AuthClient.isAuth}>Token</button>
       </div>
     </>
   )

@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000/",
   "dependencies": {
     "@apollo/client": "^3.2.9",
     "@carbon/grid": "^10.16.0",
@@ -12,6 +13,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.0",
     "carbon-components": "^10.24.0",
     "carbon-components-react": "^7.24.0",
     "carbon-icons": "^7.0.7",
