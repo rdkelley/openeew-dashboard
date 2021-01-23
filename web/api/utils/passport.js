@@ -14,7 +14,7 @@ if (process.env.VCAP_APPLICATION) {
   appStrategy = new WebAppStrategy(devConfig);
 }
 
-class PassportService {
+class _PassportService {
   constructor() {
     this.passport = passport;
   }
@@ -40,6 +40,6 @@ class PassportService {
   }
 }
 
-const passportClient = new PassportService();
+const PassportService = new _PassportService();
 
-module.exports = passportClient;
+module.exports = PassportService;

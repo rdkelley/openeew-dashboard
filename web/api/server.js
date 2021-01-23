@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
 const routes = require('./rest/routes');
-const passportClient = require('./utils/passport');
+const passportService = require('./utils/passport');
 
 const PORT = process.env.PORT || 4000;
 
@@ -52,19 +52,19 @@ server.express.use(
   }),
 );
 
-server.express.use(passportClient.initPassport());
-server.express.use(passportClient.initSession());
-passportClient.connectStrategy();
+server.express.use(passportService.initPassport());
+server.express.use(passportService.initSession());
+passportService.connectStrategy();
 
-let allowedOrigin = null;
+let allowedOrigins = null;
 if (process.env.VCAP_APPLICATION) {
-  allowedOrigin = 'https://openeew-dashboard.mybluemix.net';
+  allowedOrigins = process.env.ALLOWED_ORIGIN_URLS;
 } else {
-  allowedOrigin = 'http://localhost:3000';
+  allowedOrigins = 'http://localhost:3000';
 }
 
 server.express.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', allowedOrigin);
+  res.header('Access-Control-Allow-Origin', allowedOrigins);
   res.header('Access-Control-Allow-Credentials', true);
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header(
