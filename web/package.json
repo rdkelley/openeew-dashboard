@@ -10,7 +10,7 @@
     "api": "cd api && npm run dev",
     "api:setup": "cd api && npm install",
     "start": "concurrently \"npm run api\" \"npm run client\"",
-    "deploy": "cd client && rm -rf ./build && npm run build && cd .. && cf push -f manifest.yml"
+    "deploy": "cd client && rm -rf ./build && npm run build && cd .. && cf push -f manifest.dev.yml"
   },
   "devDependencies": {
     "concurrently": "^5.3.0"

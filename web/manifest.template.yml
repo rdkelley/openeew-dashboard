@@ -1,3 +1,5 @@
+# Create a copy of this template and rename it manifest.dev.yml to create
+# a manifest for your development env on IBM Cloud
 applications:
   - name: # name of client CF instance
     memory: 128M
@@ -15,6 +17,8 @@ applications:
     routes:
       - route: # URL of api -- should be same domain as client, with /api added
     env:
-      SESSION_SECRET: #any random string of chars, should be rotated and kept secret
+      SESSION_SECRET: # any random string of chars, should be rotated and kept secret
+      ALLOWED_ORIGIN_URLS: # List of allowed origins. The client URL should be included
+      IAM_API_KEY: # API key to authenticate requests to the IBM Cloud management server
     buildpacks:
       - https://github.com/cloudfoundry/nodejs-buildpack
